@@ -1,17 +1,14 @@
-# Uppgift X - Beskrivande titel
+# Uppgift 7 - Funktionen has_seen() håller reda på vad den "sett"
 
 ## <a name='Syfte'></a>Syfte
 
-Vad denna uppgift lär ut.
+Syftet med denna uppgift är att öva på att använda Python's `Set`.
 
 <!-- vscode-markdown-toc -->
 
 - [Syfte](#Syfte)
 - [Förberedelser](#Frberedelser)
 - [Beskrivning](#Beskrivning)
-  - [Del 1](#Del1)
-  - [Del 2](#Del2)
-- [Beskrivning](#Beskrivning-1)
   - [Detaljer](#Detaljer)
     - [Skapa en funktion](#Skapaenfunktion)
     - [Tips](#Tips)
@@ -27,60 +24,66 @@ Vad denna uppgift lär ut.
 
 ## <a name='Frberedelser'></a>Förberedelser
 
-- Nödvändiga förberedelsesteg.
+- Repetera grundläggande koncept kring Python-datatyper, med ett särskilt fokus
+  på Set.
+- Förstå hur funktioner definieras i Python, inklusive hanteringen av argument
+  och returvärden.
+- Bekanta dig med konceptet av variabler som definieras utanför funktioner för
+  att bevara värden mellan funktionsanrop, vilket är relevant för denna uppgift.
 
 ## <a name='Beskrivning'></a>Beskrivning
 
-Denna uppgift fokuserar på att fördjupa förståelsen för de två viktigaste
-delarna av Pythons dokumentation.
-
-### <a name='Del1'></a>Del 1
-
-1. **If-satser**:
-
-Beskriv detaljerat...
-
-### <a name='Del2'></a>Del 2
-
-2. **while-loopar**:
-
-Beskriv detaljerat...
-
-## <a name='Beskrivning-1'></a>Beskrivning
-
-Skriv en funktion med namnet `calculate_area` som beräknar arean av en
-rektangel.
+Utveckla en funktion med namnet `has_seen` som används för att identifiera om ett
+specifikt objekt, av datatypen heltal (`int`) eller sträng (`str`), har blivit
+observerat tidigare av funktionen.
 
 ### <a name='Detaljer'></a>Detaljer
 
 #### <a name='Skapaenfunktion'></a>Skapa en funktion
 
-- **Funktionsignatur:** `def calculate_area(length: float, width: float) ->
-float:`
-- **Vad den ska göra:** Funktionen tar två argument, `length` och `width`, och
-  returnerar rektangelns area.
-- **Vad den ska skriva ut:** Funktionen ska skriva ut "Rektangelns area är: X"
-  innan den returnerar, där X är den beräknade arean.
-- **Vad den ska returnera:** Funktionen ska returnera den beräknade arean som
-  ett flyttal.
+- **Funktionsignatur:** `def has_seen(obj: int | str) -> bool:`
+- **Vad den ska göra:** Funktionen ska kontrollera om den anropats med obj
+  tidigare.
+- **Vad den ska skriva ut:** Inget!
+- **Vad den ska returnera:** Funktionen ska returnera True om objektet obj har
+  observerats tidigare, annars False.
 
 #### <a name='Tips'></a>Tips
 
-- Kom ihåg, arean av en rektangel beräknas som `längd * bredd`.
-- Se till att din funktion skriver ut det krävda meddelandet innan den
-  returnerar arean.
+- Använd en Set för att lagra och snabbt kontrollera om ett objekt är unikt
+  eller inte. Denna Set ska definieras utanför `has_seen`-funktionen, som en
+  global variabel.
 
 #### <a name='Exempel'></a>Exempel
 
-1. **Anrop:** `calculate_area(5, 10)`
-   - **Förväntad utskrift:** "Rektangelns area är: 50"
-   - **Förväntat returvärde:** 50.0
-2. **Anrop:** `calculate_area(3.5, 2)`
-   - **Förväntad utskrift:** "Rektangelns area är: 7"
-   - **Förväntat returvärde:** 7.0
-3. **Anrop:** `calculate_area(7, 8)`
-   - **Förväntad utskrift:** "Rektangelns area är: 56"
-   - **Förväntat returvärde:** 56.0
+Observera att dessa exempelanrop är **beroende av varandra** och måste göras i
+angiven ordning för att de förväntade resultaten ska stämma. Varje anrop
+påverkar resultatet av de efterföljande anropen genom att uppdatera den interna
+`Set` som håller reda på observerade objekt.
+
+1. **Anrop:** `has_seen(1)`
+
+   - **Förväntad utskrift:** Inget!
+   - **Förväntat returvärde:** `False`
+
+2. **Anrop:** `has_seen("a")`
+
+   - **Förväntad utskrift:** Inget!
+   - **Förväntat returvärde:** `False`
+
+3. **Anrop:** `has_seen(1)`
+
+   - **Förväntad utskrift:** Inget!
+   - **Förväntat returvärde:** `True`
+
+4. **Anrop:** `has_seen(2)`
+
+   - **Förväntad utskrift:** Inget!
+   - **Förväntat returvärde:** `False`
+
+5. **Anrop:** `has_seen("a")`
+   - **Förväntad utskrift:** Inget!
+   - **Förväntat returvärde:** `True`
 
 ### <a name='Inlmningsinstruktioner'></a>Inlämningsinstruktioner
 
@@ -97,10 +100,6 @@ För att lämna in din uppgift, vänligen följ dessa steg:
 
    - Din lösning på uppgiften ska skrivas i `uppgift.py`. Det finns specifika
      instruktioner i `uppgift.py` om var du ska placera din källkod.
-
-<!-- 2. **Modifiera `uppgift.md`:**
-
-   - Din lösning på uppgiften ska skrivas i `uppgift.md`. Det finns en struktur att utöka med dina lösningar i `uppgift.md`. -->
 
 3. **Lämna in med Git:**
 
