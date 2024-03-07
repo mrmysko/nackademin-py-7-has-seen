@@ -18,6 +18,15 @@ try:
     if not has_seen.__code__.co_argcount == 1:
         raise ImportDetailsError(f"Function {fn_name} must take exactly one argument")
 
+    def test_uses_global_set():
+        has_global_set = any(
+            isinstance(v, set)
+            for v in uppgift.__dict__.values()
+            if not hasattr(v, "startswith") or v.startswith("__")
+        )
+
+        assert has_global_set, "Could not find any global variable of type 'set'"
+
     def test_has_seen():
         assert has_seen(1) == False, "Failed at the first call with 1"
         assert has_seen("a") == False, "Failed at the first call with 'a'"
